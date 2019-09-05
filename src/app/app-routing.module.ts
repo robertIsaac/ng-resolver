@@ -1,11 +1,22 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { PersonComponent } from './person/person.component';
+import { PersonResolver } from './person.resolver';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'person/:id',
+    component: PersonComponent,
+    resolve: {
+      person: PersonResolver
+    }
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [PersonResolver]
 })
 export class AppRoutingModule { }
